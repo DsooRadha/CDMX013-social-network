@@ -1,5 +1,14 @@
-// Este es el punto de entrada de tu aplicacion
+import { routes } from './lib/routes.js';
 
-import { myFunction } from './lib/index.js';
+window.onpopstate = () => {
+  const root = document.getElementById('root');
+  const component = routes[window.location.pathname];
+  root.removeChild(root.firstChild);
+  root.append(component());
+};
 
-myFunction();
+window.addEventListener('load', () => {
+  const component = routes[window.location.pathname];
+  const root = document.getElementById('root');
+  root.appendChild(component());
+});
