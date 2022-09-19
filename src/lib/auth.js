@@ -10,7 +10,7 @@ export const register = (email, password) => createUserWithEmailAndPassword(auth
 export const registerWithGoogle = () => signInWithPopup(auth, provider);
 export const userLogin = (email, password) => signInWithEmailAndPassword(auth, email, password);
 export const saveTask = (title, description) => {
-    addDoc(collection(db, 'tasks'), { title: title, description: description }
+    addDoc(collection(db, 'tasks'), { title, description}
     )
 };
 
