@@ -1,4 +1,4 @@
-import { saveTask } from "../lib/auth.js";
+import { saveTask, getTask } from "../lib/auth.js";
 
 export const homepage = () => {
   const divHomePage = document.createElement('div');
@@ -32,17 +32,23 @@ export const homepage = () => {
   labelDescription.textContent = 'Description';
   btnSave.textContent = 'Save';
 
-  btnSave.addEventListener('click', formHomePage)
+  btnSave.addEventListener('click', formHomePage);
 
   divHomePage.append(imgLogo, message,  formHome, labelTitle, inputTitle, labelDescription, inputDescription,btnSave);
-  return divHomePage;
+  return divHomePage
 };
 
 
 const formHomePage = (e) => {
   e.preventDefault();
+ 
   const title =document.getElementById('task-title').value
   const description =document.getElementById('task description').value
 
 saveTask(title,description)
-}
+};
+
+ const querySnapshot = await getTask();
+ querySnapshot.forEach(doc => {
+  console.log(doc.data())
+ });
