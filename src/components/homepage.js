@@ -36,7 +36,6 @@ export const homepage = () => {
   return divHomePage;
 };
 
-
  const formHomePage = (e) => {
    e.preventDefault();
    const title =document.getElementById('task-title').value

@@ -33,7 +33,6 @@ export const login = () => {
   messageErrorCatch.className = 'messageError';
   messageErrorCatch.id = 'messageErrorCatchLogin';
 
-
   email.textContent = 'Correo electronico';
   password.textContent = 'Contraseña';
   sendButton.textContent = 'INGRESAR';
