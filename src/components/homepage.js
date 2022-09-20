@@ -1,4 +1,4 @@
-import { saveTask, getTask } from "../lib/auth.js";
+import { saveTask, getTask, observador } from "../lib/auth.js";
 
 export const homepage = () => {
   const divHomePage = document.createElement('div');

@@ -1,5 +1,7 @@
 import { onNavigate } from '../main.js';
-import { registerWithGoogle } from '../lib/auth.js';
+import { registerWithGoogle,observador } from '../lib/auth.js';
+
+observador();
 
 export const welcome = () => {
   const div = document.createElement('div');
