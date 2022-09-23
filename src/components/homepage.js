@@ -42,21 +42,39 @@ export const homepage = () => {
 
   onGetPost((querySnapshot) => {
     const postView = document.getElementById('div-View');
-
+    
     let html = '';
-   order(querySnapshot)
+
     querySnapshot.forEach((doc) => {
       const collectionPost = doc.data();
-   
-      html += `
-    <div class = "card border-primary">
-    <p>${collectionPost.post}</p>
-    </div>
-    `;
+      const div = document.createElement('div');
+      const input= document.createElement('input');
+    //   html += `
+    // <div class = "card border-primary">
+    // <p>${collectionPost.post}</p>
+    // <button class='btn-edit' data-id='${doc.id}'>Editar</button>
+    // </div>
+    // `;
+
+     div.textContent='Holaa' 
+
+  postView.append(div, input)
     });
-    postView.innerHTML = html;
-  });
+    //postView.innerHTML = html;
+
+
+     const editPost= postView.querySelectorAll('.btn-edit');
+     editPost.forEach(btn=>{
+       btn.addEventListener('click', (e)=>{
+         console.log(e.target.dataset.id)
+       })
+     })
+   });
+ 
+
+
 
   divHomePage.append(imgLogo, message, formHome, labelTitle, labelDescription, inputDescription, btnPost, divPosts);
   return divHomePage;
 };
+

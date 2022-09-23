@@ -21,7 +21,7 @@ export const savePost = (post) => {
 };
 
 export const getPost = () => getDocs(collection(db, 'posts'));
-export const onGetPost = (callback) => onSnapshot(collection(db, 'posts'), callback);
+export const onGetPost = (callback) => (onSnapshot(collection(db, 'posts'), callback));
 
 export function loginStateUser() {
   onAuthStateChanged(auth, (user) => {
@@ -36,4 +36,5 @@ export function loginStateUser() {
   });
 }
 
-export const order = ()=> query (collection(db, 'posts'), orderBy('post'), limit(10));
+export const order = ()=> query(collection(db, 'posts'), orderBy('post'), limit(1));
+
