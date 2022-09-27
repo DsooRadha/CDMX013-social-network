@@ -10,7 +10,7 @@ function closeModal() {
   const modalPadre = document.getElementById('modal-content');
   divPosts.removeChild(modalPadre);
 }
-function modalDelete() {
+function modalDelete(item) {
   const divPosts = document.getElementById('div-View');
   const modalPadre = document.createElement('section');
   modalPadre.className = 'modal-class';
@@ -24,6 +24,7 @@ function modalDelete() {
   const okbtn = document.createElement('button');
   okbtn.className = 'btnok';
   okbtn.textContent = 'Eliminar';
+  okbtn.data = ('data-id', item);
   cancelbtn.textContent = 'Cancelar';
 
   textModal.textContent = 'Deseas eliminar este Post?';
@@ -107,7 +108,9 @@ export const homepage = () => {
     const btnsDelete = divPosts.querySelectorAll('.btn-delete');
     console.log(btnsDelete);
     btnsDelete.forEach((btn) => {
-      btn.addEventListener('click', (modalDelete));
+      btn.addEventListener('click', (e) => {
+        (modalDelete(e.target.data));
+      });
     });
   });
 
