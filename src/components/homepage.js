@@ -4,6 +4,38 @@ import {
 
 let editStatus = false;
 let id = '';
+
+function closeModal() {
+  const divPosts = document.getElementById('div-View');
+  const modalPadre = document.getElementById('modal-content');
+  divPosts.removeChild(modalPadre);
+}
+function modalDelete() {
+  const divPosts = document.getElementById('div-View');
+  const modalPadre = document.createElement('section');
+  modalPadre.className = 'modal-class';
+  modalPadre.id = 'modal-content';
+  const modalHijo = document.createElement('section');
+  modalHijo.className = 'modalHijo-class';
+  modalHijo.id = 'modalHijo-content';
+  const textModal = document.createElement('h3');
+  const cancelbtn = document.createElement('button');
+  cancelbtn.className = 'btnCancel';
+  const okbtn = document.createElement('button');
+  okbtn.className = 'btnok';
+  okbtn.textContent = 'Eliminar';
+  cancelbtn.textContent = 'Cancelar';
+
+  textModal.textContent = 'Deseas eliminar este Post?';
+  okbtn.addEventListener('click', ({ target: { data } }) => {
+    deletePost(data);
+  });
+
+  modalHijo.append(textModal, cancelbtn, okbtn);
+  divPosts.appendChild(modalPadre);
+  modalPadre.appendChild(modalHijo);
+}
+
 const formHomePage = () => {
   const postEditSave = document.getElementById('post-description').value;
   if (!editStatus) {
@@ -71,25 +103,11 @@ export const homepage = () => {
         btnPost.innerText = 'Guardar';
       });
     });
+
     const btnsDelete = divPosts.querySelectorAll('.btn-delete');
     console.log(btnsDelete);
     btnsDelete.forEach((btn) => {
-      btn.addEventListener('click', ({ target: { data } }) => {
-        const modal = document.createElement('section');
-        modal.className = 'modal-class';
-        const textModal = document.createElement('h3');
-        const cancelbtn = document.createElement('button');
-        const okbtn = document.createElement('button');
-        okbtn.textContent = 'Eliminar';
-        cancelbtn.textContent = 'Cancelar';
-        textModal.textContent = 'Deseas eliminar este Post?';
-        //okbtn.onclick = deletePost(data);
-
-        divPosts.append(modal);
-        modal.append(textModal, cancelbtn, okbtn);
-
-        // deletePost(data);
-      });
+      btn.addEventListener('click', (modalDelete));
     });
   });
 
