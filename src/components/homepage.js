@@ -10,7 +10,7 @@ const closeModal = () => {
   const modalContainer = document.getElementById('modal-content');
   divPosts.removeChild(modalContainer);
 };
-function modalDelete(item) {
+const modalDelete = (item) => {
   const divPosts = document.getElementById('div-View');
   const modalContainer = document.createElement('section');
   modalContainer.className = 'modal-class';
@@ -25,7 +25,7 @@ function modalDelete(item) {
   const okbtn = document.createElement('button');
   okbtn.className = 'btnok';
   okbtn.textContent = 'Eliminar';
-  okbtn.data = ('data-id', item);
+  okbtn.data = (item);
   cancelbtn.textContent = 'Cancelar';
 
   textModal.textContent = '¿Deseas eliminar este Post?';
@@ -37,7 +37,7 @@ function modalDelete(item) {
   modalPopup.append(textModal, cancelbtn, okbtn);
   divPosts.appendChild(modalContainer);
   modalContainer.appendChild(modalPopup);
-}
+};
 
 const formHomePage = () => {
   const postEditSave = document.getElementById('post-description').value;
@@ -66,7 +66,7 @@ export const homepage = () => {
   labelTitle.className = 'title';
   const labelDescription = document.createElement('label');
   labelDescription.className = 'description';
-  const inputDescription = document.createElement('input');
+  const inputDescription = document.createElement('textarea');
   inputDescription.id = 'post-description';
   inputDescription.setAttribute('placeholder', 'Escribe algo...');
   const btnPost = document.createElement('button');
@@ -89,7 +89,11 @@ export const homepage = () => {
       const deleteBtn = document.createElement('button');
       deleteBtn.className = 'btn-delete';
       deleteBtn.data = ('data-id', doc.id);
-      allPosts.append(postContent, editBtn, deleteBtn);
+      const likeBtn = document.createElement('button');
+      likeBtn.className = 'btn-like';
+      likeBtn.data = ('data-id', doc.id);
+      likeBtn.textContent = 'like';
+      allPosts.append(postContent, likeBtn, editBtn, deleteBtn);
       divPosts.append(allPosts);
     });
 

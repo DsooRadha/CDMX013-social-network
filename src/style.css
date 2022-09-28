@@ -379,9 +379,9 @@
         height: 100%;
         background-color: rgba(0, 0, 0, 0.703);
         position: absolute;
-        top:0px;
-        left:0px;
-        z-index: 300;
+        top:0vh;
+        left:0vh;
+        z-index: 1;
     }
     .modalHijo-class{
         background-color: #f4f3f3;

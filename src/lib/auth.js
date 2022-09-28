@@ -24,7 +24,7 @@ const order = query(collection(db, 'posts'), orderBy('createdAt', 'desc'), limit
 
 export const onGetPost = (callback) => onSnapshot(order, callback);
 
-export function loginStateUser() {
+export const loginStateUser = () => {
   onAuthStateChanged(auth, (user) => {
     if (user) {
       const uid = user.uid;
@@ -36,7 +36,7 @@ export function loginStateUser() {
       onNavigate('/');
     }
   });
-}
+};
 
 export const getPost = (id) => getDoc(doc(db, 'posts', id));
 export const updatePost = (id, newFields) => updateDoc(doc(db, 'posts', id), newFields);
