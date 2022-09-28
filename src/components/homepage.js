@@ -66,7 +66,9 @@ export const homepage = () => {
   labelTitle.className = 'title';
   const labelDescription = document.createElement('label');
   labelDescription.className = 'description';
-  const inputDescription = document.createElement('input');
+  const inputDescription = document.createElement('textarea');
+  inputDescription.setAttribute('rows', 4);
+  inputDescription.setAttribute('maxlength', 100);
   inputDescription.id = 'post-description';
   inputDescription.setAttribute('placeholder', 'Escribe algo...');
   const btnPost = document.createElement('button');
