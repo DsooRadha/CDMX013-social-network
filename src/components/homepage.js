@@ -1,5 +1,5 @@
 import {
-  savePost, onGetPost, getPost, updatePost, deletePost, likesPost, dislikesPost,
+  savePost, onGetPost, getPost, updatePost, deletePost, likesPost, dislikesPost, emailUser,
 } from '../lib/auth.js';
 
 let editStatus = false;
@@ -78,40 +78,47 @@ export const homepage = () => {
   btnPost.innerText = 'Publicar';
 
   onGetPost((querySnapshot) => {
+    let count = 0;
     divPosts.innerHTML = '';
     querySnapshot.forEach((doc) => {
       const collectionPost = doc.data();
       const user = collectionPost.userEmail;
+      console.log((collectionPost.likes).length);
       const showEmail = document.createElement('p');
       showEmail.textContent = user;
       const allPosts = document.createElement('section');
       allPosts.className = 'containerPost';
       const postContent = document.createElement('p');
       postContent.textContent = collectionPost.post;
-      const editBtn = document.createElement('button');
-      editBtn.className = 'btn-edit';
-      editBtn.data = ('data-id', doc.id);
-      const deleteBtn = document.createElement('button');
-      deleteBtn.className = 'btn-delete';
-      deleteBtn.data = ('data-id', doc.id);
       const likeBtn = document.createElement('button');
       likeBtn.className = 'btn-like';
       likeBtn.data = ('data-id', doc.id);
       likeBtn.textContent = 'like';
-      let count = 0;
+      const countLikes = document.createElement('p');
+      countLikes.textContent = count;
+      if (user === emailUser) {
+        const editBtn = document.createElement('button');
+        editBtn.className = 'btn-edit';
+        editBtn.data = ('data-id', doc.id);
+        const deleteBtn = document.createElement('button');
+        deleteBtn.className = 'btn-delete';
+        deleteBtn.data = ('data-id', doc.id);
+        allPosts.append(editBtn, deleteBtn);
+      } 
       likeBtn.addEventListener('click', async (e) => {
-        console.log(e.target.data);
-        console.log(collectionPost.likes.includes(e.target.data));
+      //   console.log(e.target.data);
+      //   console.log(collectionPost.likes.includes(e.target.data));
         count++;
-        console.log(count);
-        if (count % 2 !== 0) {
-          await likesPost(e.target.data, collectionPost.likes.includes(e.target.data));
-        } else {
-          await dislikesPost(e.target.data, collectionPost.likes.includes(e.target.data));
-        }
+        //   console.log(count);
+        // if (count % 2 !== 0) {
+        await likesPost(e.target.data, collectionPost.likes.includes(e.target.data));
+        likeBtn.textContent = '🖤';
+      // } else {
+      //   await dislikesPost(e.target.data, collectionPost.likes.includes(e.target.data));
+      // }
       });
 
-      allPosts.append(showEmail, postContent, likeBtn, editBtn, deleteBtn);
+      allPosts.append(showEmail, postContent, likeBtn, countLikes);
       divPosts.append(allPosts);
     });
 

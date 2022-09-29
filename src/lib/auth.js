@@ -22,15 +22,18 @@ export const savePost = (post) => {
     post, createdAt: serverTimestamp(), userEmail: auth.currentUser.email, likes: [],
   });
 };
-const order = query(collection(db, 'posts'), orderBy('createdAt', 'desc'), limit(10));
 
+const order = query(collection(db, 'posts'), orderBy('createdAt', 'desc'), limit(10));
 export const onGetPost = (callback) => onSnapshot(order, callback);
 
+export const emailUser = [];
+console.log(emailUser);
 export function loginStateUser() {
   onAuthStateChanged(auth, (user) => {
     if (user) {
       const uid = user.uid;
       const email = user.email;
+      emailUser.push(email);
       console.log('Existe un usuario activo', uid, email);
       onNavigate('/homepage');
     } else {

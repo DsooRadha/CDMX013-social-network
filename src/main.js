@@ -25,6 +25,7 @@ export const onNavigate = (pathname) => {
 const component = routes[window.location.pathname];
 
 loginStateUser();
+
 window.onpopstate = () => {
   root.removeChild(root.firstChild);
   root.append(component());
