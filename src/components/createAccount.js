@@ -25,7 +25,6 @@ const validateAndRecord = (e) => {
     })
     .catch((error) => {
       const errorCode = error.code;
-
       if (errorCode === 'auth/email-already-in-use') {
         messageError.innerHTML = 'Este correo ya está registrado';
       }

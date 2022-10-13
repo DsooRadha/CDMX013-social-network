@@ -7,6 +7,7 @@
     }
 
     .welcomeImg {
+        margin-top: 8vh;
         width: 30vw;
         left: 25vh;
         top: 35vh;
@@ -143,9 +144,11 @@
         display: flex;
         flex-direction: column;
         align-items: center;
-        margin-top: 1vh;
     }
 
+    .welcome{
+        margin-top: 8vh;
+    }
     #createAccount {
         padding-left: 10vw;
         display: flex;
