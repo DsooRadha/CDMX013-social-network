@@ -498,6 +498,6 @@
     .editAndDeletePosts {
         position: absolute;
         grid-row: row 3;
-        left: 61vw;
+        left: 55vw;
     }
 }

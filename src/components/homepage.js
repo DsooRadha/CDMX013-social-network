@@ -40,7 +40,7 @@ const modalDelete = (item) => {
 };
 
 const formHomePage = () => {
-  const postEditSave = document.getElementById('post-description').value;
+  const postEditSave = document.getElementById('post-description').alue;
   if (!editStatus) {
     savePost(postEditSave);
   } else {
