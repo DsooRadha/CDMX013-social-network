@@ -167,17 +167,6 @@ export const homepage = () => {
     }
   });
 
-  const editPost = divPosts.querySelectorAll('.btn-edit');
-  editPost.forEach((btn) => {
-    btn.addEventListener('click', async (e) => {
-      const postId = await getPost(e.target.data);
-      const postInfo = postId.data();
-      inputDescription.value = postInfo.post;
-      editStatus = true;
-      id = postId.id;
-      btnPost.innerText = 'Guardar';
-    });
-  });
   topsection.append(imgLogo, btnCloseSession);
   divHomePage.append(
     topsection,
