@@ -1,7 +1,8 @@
 /* eslint-disable max-len */
 import {
   getAuth, signInWithPopup, GoogleAuthProvider, createUserWithEmailAndPassword,
-  signInWithEmailAndPassword, onAuthStateChanged, signOut, getFirestore, collection, addDoc, onSnapshot, query, orderBy, limit, serverTimestamp, getDoc, doc,
+  signInWithEmailAndPassword, onAuthStateChanged, signOut, getFirestore, collection, 
+  addDoc, onSnapshot, query, orderBy, limit, serverTimestamp, getDoc, doc,
   updateDoc, deleteDoc, arrayUnion, arrayRemove,
 } from './imports.js';
 import { onNavigate } from '../main.js';
